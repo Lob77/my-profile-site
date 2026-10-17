@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OOO · Korean Language Teacher</title>
+    <meta name="description" content="1:1 and group Korean lessons for international students. Book a free trial class today.">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <!-- Noto Serif KR: Google Fonts (SIL Open Font License, 상업적 이용 무료) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;600;700&display=swap" rel="stylesheet">
+    <!-- Pretendard는 Google Fonts에 없는 폰트이므로 공식 배포 CDN에서 로드 (SIL OFL, 상업적 이용 무료) -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@1.3.9/dist/web/static/pretendard.min.css">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        /* Tailwind 커스텀 테마: 차분하고 신뢰감 있는 색상/폰트 토큰 */
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream: '#FAF8F4',
+                        creamAlt: '#F1ECE3',
+                        navy: '#1F3A5F',
+                        navyDark: '#15283F',
+                        gold: '#C98A3B',
+                        ink: '#2B2B28',
+                        muted: '#6B6B64',
+                        borderSoft: '#E4DED2'
+                    },
+                    fontFamily: {
+                        serif: ['"Noto Serif KR"', 'Georgia', 'serif'],
+                        sans: ['Pretendard', '-apple-system', 'sans-serif']
+                    }
+                }
+            }
+        };
+    </script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-cream text-ink font-sans antialiased">
+
+    <!-- ===================== 헤더 (고정 네비게이션) ===================== -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-cream/90 backdrop-blur-sm border-b border-borderSoft">
+        <div class="max-w-6xl mx-auto px-5 sm:px-8 h-16 flex items-center justify-between">
+            <!-- 로고 -->
+            <a href="#top" class="font-serif font-bold text-lg text-navy">
+                OOO <span class="hidden sm:inline text-muted font-sans font-normal text-sm">· Korean Teacher</span>
+            </a>
+
+            <!-- 데스크톱 내비게이션 -->
+            <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-navyDark">
+                <a href="#about" class="nav-link i18n" data-en="About" data-ko="소개">About</a>
+                <a href="#courses" class="nav-link i18n" data-en="Courses" data-ko="강의 소개">Courses</a>
+                <a href="#how-it-works" class="nav-link i18n" data-en="How it Works" data-ko="수업 방식">How it Works</a>
+                <a href="#reviews" class="nav-link i18n" data-en="Reviews" data-ko="후기">Reviews</a>
+                <a href="#faq" class="nav-link i18n" data-en="FAQ" data-ko="자주 묻는 질문">FAQ</a>
+            </nav>
+
+            <div class="flex items-center gap-3">
+                <!-- 언어 전환 토글 -->
+                <div class="hidden sm:flex items-center border border-borderSoft rounded-full overflow-hidden text-xs font-semibold">
+                    <button type="button" data-lang-switch="en" class="lang-btn px-3 py-1.5">EN</button>
+                    <button type="button" data-lang-switch="ko" class="lang-btn px-3 py-1.5">KO</button>
+                </div>
+
+                <!-- CTA 버튼 (시범수업 신청하기) -->
+                <a href="#apply" class="cta-button hidden sm:inline-flex items-center px-4 py-2 rounded-full bg-navy text-cream text-sm font-semibold hover:bg-navyDark transition">
+                    <span class="i18n" data-en="Book a Trial Class" data-ko="시범수업 신청하기">Book a Trial Class</span>
+                </a>
+
+                <!-- 모바일 메뉴 버튼 -->
+                <button id="mobileMenuBtn" class="md:hidden p-2 text-navy" aria-label="Menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- 모바일 드롭다운 메뉴 -->
+        <div id="mobileMenu" class="hidden md:hidden bg-cream border-t border-borderSoft">
+            <div class="max-w-6xl mx-auto px-5 py-4 flex flex-col gap-4 text-sm font-medium text-navyDark">
+                <a href="#about" class="nav-link i18n" data-en="About" data-ko="소개">About</a>
+                <a href="#courses" class="nav-link i18n" data-en="Courses" data-ko="강의 소개">Courses</a>
+                <a href="#how-it-works" class="nav-link i18n" data-en="How it Works" data-ko="수업 방식">How it Works</a>
+                <a href="#reviews" class="nav-link i18n" data-en="Reviews" data-ko="후기">Reviews</a>
+                <a href="#faq" class="nav-link i18n" data-en="FAQ" data-ko="자주 묻는 질문">FAQ</a>
+                <div class="flex items-center gap-2 pt-1">
+                    <button type="button" data-lang-switch="en" class="lang-btn px-3 py-1.5 border border-borderSoft rounded-full text-xs font-semibold">EN</button>
+                    <button type="button" data-lang-switch="ko" class="lang-btn px-3 py-1.5 border border-borderSoft rounded-full text-xs font-semibold">KO</button>
+                </div>
+                <a href="#apply" class="cta-button inline-flex items-center justify-center px-4 py-2 rounded-full bg-navy text-cream text-sm font-semibold">
+                    <span class="i18n" data-en="Book a Trial Class" data-ko="시범수업 신청하기">Book a Trial Class</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main id="top" class="pt-16">
+
+        <!-- ===================== 히어로 섹션 ===================== -->
+        <section class="relative px-5 sm:px-8 py-20 sm:py-28 overflow-hidden">
+            <div class="max-w-6xl mx-auto grid md:grid-cols-[1.1fr_0.9fr] gap-12 items-center fade-in">
+                <div>
+                    <p class="i18n text-gold font-semibold text-sm tracking-wide uppercase mb-4" data-en="Korean Language Teacher" data-ko="한국어 강사">Korean Language Teacher</p>
+                    <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-navyDark leading-tight mb-6">
+                        <span class="i18n" data-en="Speak Korean with confidence, from day one." data-ko="첫 수업부터 자신 있게 말하는 한국어.">Speak Korean with confidence, from day one.</span>
+                    </h1>
+                    <p class="i18n text-muted text-lg leading-relaxed mb-8 max-w-xl" data-en="Personalized 1:1 and small-group Korean lessons for international students — from absolute beginners to TOPIK candidates." data-ko="초급부터 TOPIK 준비까지, 외국인 학습자를 위한 맞춤형 1:1·소그룹 한국어 수업입니다.">Personalized 1:1 and small-group Korean lessons for international students — from absolute beginners to TOPIK candidates.</p>
+                    <div class="flex flex-wrap gap-4 mb-10">
+                        <a href="#apply" class="cta-button inline-flex items-center px-6 py-3 rounded-full bg-navy text-cream font-semibold hover:bg-navyDark transition">
+                            <span class="i18n" data-en="Book a Trial Class" data-ko="시범수업 신청하기">Book a Trial Class</span>
+                        </a>
+                        <a href="#courses" class="inline-flex items-center px-6 py-3 rounded-full border border-navy text-navy font-semibold hover:bg-navy/5 transition">
+                            <span class="i18n" data-en="Courses" data-ko="강의 소개">Courses</span>
+                        </a>
+                    </div>
+                    <!-- 신뢰 지표 -->
+                    <div class="flex flex-wrap gap-x-10 gap-y-3 text-sm text-navyDark">
+                        <div><span class="font-serif font-bold text-xl text-navy">7</span> <span class="i18n text-muted" data-en="years teaching" data-ko="년 강의 경력">years teaching</span></div>
+                        <div><span class="font-serif font-bold text-xl text-navy">400+</span> <span class="i18n text-muted" data-en="students from 30+ countries" data-ko="30개국 이상, 400명 이상의 학생">students from 30+ countries</span></div>
+                        <div><span class="font-serif font-bold text-xl text-navy">4.9/5</span> <span class="i18n text-muted" data-en="average rating" data-ko="평균 평점">average rating</span></div>
+                    </div>
+                </div>
+
+                <!-- 프로필 이미지 영역 (실제 사진으로 교체 가능) -->
+                <div class="flex justify-center">
+                    <div class="relative">
+                        <div class="w-64 h-64 sm:w-80 sm:h-80 rounded-full bg-navy flex items-center justify-center font-serif text-5xl sm:text-6xl text-cream shadow-xl ring-8 ring-white">
+                            OOO
+                        </div>
+                        <div class="absolute -bottom-3 -right-3 bg-gold text-navyDark font-semibold text-sm px-4 py-2 rounded-full shadow-md">
+                            <span class="i18n" data-en="Certified TOPIK Instructor" data-ko="TOPIK 공인 강사">Certified TOPIK Instructor</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== 소개 (About) ===================== -->
+        <section id="about" class="px-5 sm:px-8 py-20 bg-creamAlt/60 border-t border-borderSoft">
+            <div class="max-w-6xl mx-auto grid md:grid-cols-[0.8fr_1.2fr] gap-12 fade-in">
+                <div>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-navyDark mb-3">
+                        <span class="i18n" data-en="About Me" data-ko="소개">About Me</span>
+                    </h2>
+                    <p class="i18n text-muted text-lg leading-relaxed" data-en="A calm, structured approach to learning Korean — built for adult learners who want real results." data-ko="성인 학습자를 위한, 차분하고 체계적인 한국어 학습 방식입니다.">A calm, structured approach to learning Korean — built for adult learners who want real results.</p>
+                </div>
+                <div class="space-y-5 text-navyDark leading-relaxed">
+                    <p class="i18n" data-en="Hi, I'm OOO — a Korean language teacher based in Seoul. For the past seven years, I've helped international students move from hesitant beginners to confident Korean speakers, whether their goal is daily conversation, university life, work, or the TOPIK exam." data-ko="안녕하세요, 저는 서울에서 활동하는 한국어 강사 OOO입니다. 지난 7년간 일상 회화, 대학 생활, 직장, TOPIK 시험 등 다양한 목표를 가진 외국인 학생들이 자신 있게 한국어를 말할 수 있도록 도와왔습니다.">Hi, I'm OOO — a Korean language teacher based in Seoul. For the past seven years, I've helped international students move from hesitant beginners to confident Korean speakers, whether their goal is daily conversation, university life, work, or the TOPIK exam.</p>
+                    <p class="i18n" data-en="My teaching philosophy is simple: every lesson should feel structured, encouraging, and immediately useful. I design each curriculum around the learner — not a fixed textbook — and track progress openly so you always know where you stand." data-ko="제 수업의 철학은 단순합니다. 모든 수업은 체계적이고, 격려가 되며, 바로 활용할 수 있어야 합니다. 정해진 교재가 아니라 학습자에게 맞춘 커리큘럼을 설계하며, 진도를 투명하게 공유해 항상 본인의 실력을 확인할 수 있도록 합니다.">My teaching philosophy is simple: every lesson should feel structured, encouraging, and immediately useful. I design each curriculum around the learner — not a fixed textbook — and track progress openly so you always know where you stand.</p>
+                    <ul class="grid sm:grid-cols-2 gap-3 pt-2 text-sm">
+                        <li class="flex items-center gap-2"><span class="dot"></span><span class="i18n" data-en="M.A. in Korean Language Education" data-ko="한국어교육학 석사">M.A. in Korean Language Education</span></li>
+                        <li class="flex items-center gap-2"><span class="dot"></span><span class="i18n" data-en="Certified Korean Language Instructor (KIIP)" data-ko="사회통합프로그램(KIIP) 한국어 강사 자격">Certified Korean Language Instructor (KIIP)</span></li>
+                        <li class="flex items-center gap-2"><span class="dot"></span><span class="i18n" data-en="Fluent in English, conversational Japanese" data-ko="영어 능통, 일본어 회화 가능">Fluent in English, conversational Japanese</span></li>
+                        <li class="flex items-center gap-2"><span class="dot"></span><span class="i18n" data-en="7 years teaching international students" data-ko="외국인 학습자 강의 경력 7년">7 years teaching international students</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== 강의 소개 (Courses) ===================== -->
+        <section id="courses" class="px-5 sm:px-8 py-20">
+            <div class="max-w-6xl mx-auto fade-in">
+                <div class="text-center max-w-2xl mx-auto mb-14">
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-navyDark mb-3">
+                        <span class="i18n" data-en="Courses" data-ko="강의 소개">Courses</span>
+                    </h2>
+                    <p class="i18n text-muted text-lg" data-en="Every course is available 1:1 or in small groups (max 4), online or in Seoul." data-ko="모든 강의는 1:1 또는 소그룹(최대 4인)으로, 온라인 또는 서울 오프라인으로 진행됩니다.">Every course is available 1:1 or in small groups (max 4), online or in Seoul.</p>
+                </div>
+
+                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- 코스 카드 1 -->
+                    <div class="course-card">
+                        <div class="text-xs font-semibold text-gold uppercase tracking-wide mb-3 i18n" data-en="Beginner" data-ko="초급">Beginner</div>
+                        <h3 class="font-serif text-xl font-bold text-navyDark mb-2 i18n" data-en="Survival Korean" data-ko="생활 한국어">Survival Korean</h3>
+                        <p class="i18n text-muted text-sm leading-relaxed" data-en="Hangul, everyday phrases, and the confidence to handle daily life in Korea." data-ko="한글, 생활 표현, 그리고 한국 생활에 자신감을 더해주는 수업입니다.">Hangul, everyday phrases, and the confidence to handle daily life in Korea.</p>
+                    </div>
+                    <!-- 코스 카드 2 -->
+                    <div class="course-card">
+                        <div class="text-xs font-semibold text-gold uppercase tracking-wide mb-3 i18n" data-en="Intermediate" data-ko="중급">Intermediate</div>
+                        <h3 class="font-serif text-xl font-bold text-navyDark mb-2 i18n" data-en="Conversation Fluency" data-ko="회화 유창성">Conversation Fluency</h3>
+                        <p class="i18n text-muted text-sm leading-relaxed" data-en="Natural, topic-based conversation practice for work, school, and daily life." data-ko="직장, 학교, 일상생활을 위한 주제 중심의 자연스러운 회화 연습입니다.">Natural, topic-based conversation practice for work, school, and daily life.</p>
+                    </div>
+                    <!-- 코스 카드 3 -->
+                    <div class="course-card">
+                        <div class="text-xs font-semibold text-gold uppercase tracking-wide mb-3 i18n" data-en="Exam Prep" data-ko="시험 대비">Exam Prep</div>
+                        <h3 class="font-serif text-xl font-bold text-navyDark mb-2 i18n" data-en="TOPIK I &amp; II" data-ko="TOPIK I · II">TOPIK I &amp; II</h3>
+                        <p class="i18n text-muted text-sm leading-relaxed" data-en="Structured, test-focused preparation with practice sets and timed mock exams." data-ko="문제풀이와 실전 모의시험으로 구성된 체계적인 TOPIK 대비 수업입니다.">Structured, test-focused preparation with practice sets and timed mock exams.</p>
+                    </div>
+                    <!-- 코스 카드 4 -->
+                    <div class="course-card">
+                        <div class="text-xs font-semibold text-gold uppercase tracking-wide mb-3 i18n" data-en="Advanced" data-ko="고급">Advanced</div>
+                        <h3 class="font-serif text-xl font-bold text-navyDark mb-2 i18n" data-en="Business Korean" data-ko="비즈니스 한국어">Business Korean</h3>
+                        <p class="i18n text-muted text-sm leading-relaxed" data-en="Formal register, email writing, and meeting Korean for the workplace." data-ko="격식체, 이메일 작성, 회의에서 사용하는 비즈니스 한국어를 다룹니다.">Formal register, email writing, and meeting Korean for the workplace.</p>
+                    </div>
+                    <!-- 코스 카드 5 -->
+                    <div class="course-card">
+                        <div class="text-xs font-semibold text-gold uppercase tracking-wide mb-3 i18n" data-en="All Levels" data-ko="전 레벨">All Levels</div>
+                        <h3 class="font-serif text-xl font-bold text-navyDark mb-2 i18n" data-en="K-Culture &amp; Conversation" data-ko="한국 문화 &amp; 회화">K-Culture &amp; Conversation</h3>
+                        <p class="i18n text-muted text-sm leading-relaxed" data-en="Learn through current events, dramas, and real cultural context." data-ko="시사, 드라마, 실제 문화적 맥락을 통해 배우는 수업입니다.">Learn through current events, dramas, and real cultural context.</p>
+                    </div>
+                    <!-- 코스 카드 6 -->
+                    <div class="course-card">
+                        <div class="text-xs font-semibold text-gold uppercase tracking-wide mb-3 i18n" data-en="Children &amp; Teens" data-ko="어린이 · 청소년">Children &amp; Teens</div>
+                        <h3 class="font-serif text-xl font-bold text-navyDark mb-2 i18n" data-en="Young Learners" data-ko="저연령 학습자">Young Learners</h3>
+                        <p class="i18n text-muted text-sm leading-relaxed" data-en="A patient, playful introduction to Korean for school-age children." data-ko="학령기 아동을 위한 친근하고 재미있는 한국어 입문 수업입니다.">A patient, playful introduction to Korean for school-age children.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== 수업 진행 방식 (How it Works) ===================== -->
+        <section id="how-it-works" class="px-5 sm:px-8 py-20 bg-navyDark text-cream">
+            <div class="max-w-6xl mx-auto fade-in">
+                <div class="text-center max-w-2xl mx-auto mb-14">
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold mb-3">
+                        <span class="i18n" data-en="How It Works" data-ko="수업 진행 방식">How It Works</span>
+                    </h2>
+                    <p class="i18n text-cream/70 text-lg" data-en="A clear, four-step process from first message to fluent conversation." data-ko="첫 연락부터 유창한 대화까지, 명확한 4단계 과정입니다.">A clear, four-step process from first message to fluent conversation.</p>
+                </div>
+
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <h3 class="font-serif font-bold text-lg mb-2 i18n" data-en="Book a Trial" data-ko="시범수업 신청">Book a Trial</h3>
+                        <p class="i18n text-cream/70 text-sm leading-relaxed" data-en="Choose a time for a free 30-minute trial class." data-ko="30분 무료 시범수업 시간을 선택하세요.">Choose a time for a free 30-minute trial class.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <h3 class="font-serif font-bold text-lg mb-2 i18n" data-en="Level Check" data-ko="레벨 테스트">Level Check</h3>
+                        <p class="i18n text-cream/70 text-sm leading-relaxed" data-en="We assess your current level and goals together." data-ko="현재 실력과 목표를 함께 확인합니다.">We assess your current level and goals together.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <h3 class="font-serif font-bold text-lg mb-2 i18n" data-en="Custom Plan" data-ko="맞춤 커리큘럼">Custom Plan</h3>
+                        <p class="i18n text-cream/70 text-sm leading-relaxed" data-en="A curriculum is built around your schedule and goals." data-ko="일정과 목표에 맞춘 커리큘럼을 설계합니다.">A curriculum is built around your schedule and goals.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">4</div>
+                        <h3 class="font-serif font-bold text-lg mb-2 i18n" data-en="Weekly Classes" data-ko="정규 수업">Weekly Classes</h3>
+                        <p class="i18n text-cream/70 text-sm leading-relaxed" data-en="Regular sessions via Zoom or in person, with progress reviews." data-ko="Zoom 또는 오프라인으로 진행되며, 정기적으로 진도를 점검합니다.">Regular sessions via Zoom or in person, with progress reviews.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== 수강생 후기 (Reviews) ===================== -->
+        <section id="reviews" class="px-5 sm:px-8 py-20">
+            <div class="max-w-4xl mx-auto fade-in">
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-navyDark text-center mb-12">
+                    <span class="i18n" data-en="What Students Say" data-ko="수강생 후기">What Students Say</span>
+                </h2>
+
+                <div class="relative">
+                    <div id="testimonialTrack" class="overflow-hidden">
+                        <div class="testimonial-slide active">
+                            <p class="i18n font-serif text-xl sm:text-2xl text-navyDark leading-relaxed mb-6" data-en="&ldquo;OOO's lessons gave me structure I never had with apps. Within three months I could hold a real conversation at work.&rdquo;" data-ko="&ldquo;OOO 선생님 수업에서 앱으로 공부할 때는 없던 체계를 찾았어요. 3개월 만에 회사에서 실제로 대화할 수 있게 됐습니다.&rdquo;">"OOO's lessons gave me structure I never had with apps. Within three months I could hold a real conversation at work."</p>
+                            <div class="text-sm font-semibold text-navy">David M. <span class="text-muted font-normal i18n" data-en="— Canada, Business Korean" data-ko="— 캐나다, 비즈니스 한국어">— Canada, Business Korean</span></div>
+                        </div>
+                        <div class="testimonial-slide">
+                            <p class="i18n font-serif text-xl sm:text-2xl text-navyDark leading-relaxed mb-6" data-en="&ldquo;Patient, organized, and genuinely encouraging. I passed TOPIK II on my first try.&rdquo;" data-ko="&ldquo;차분하고 체계적이면서도 진심으로 격려해주셨어요. TOPIK II를 한 번에 합격했습니다.&rdquo;">"Patient, organized, and genuinely encouraging. I passed TOPIK II on my first try."</p>
+                            <div class="text-sm font-semibold text-navy">Aiko T. <span class="text-muted font-normal i18n" data-en="— Japan, TOPIK Prep" data-ko="— 일본, TOPIK 대비">— Japan, TOPIK Prep</span></div>
+                        </div>
+                        <div class="testimonial-slide">
+                            <p class="i18n font-serif text-xl sm:text-2xl text-navyDark leading-relaxed mb-6" data-en="&ldquo;The trial class alone told me everything I needed to know. Every lesson since has felt tailored to me.&rdquo;" data-ko="&ldquo;시범수업 한 번으로 모든 걸 알 수 있었어요. 이후 모든 수업이 저에게 딱 맞춰져 있다는 느낌을 받았습니다.&rdquo;">"The trial class alone told me everything I needed to know. Every lesson since has felt tailored to me."</p>
+                            <div class="text-sm font-semibold text-navy">Lucas R. <span class="text-muted font-normal i18n" data-en="— Brazil, Conversation Fluency" data-ko="— 브라질, 회화 유창성">— Brazil, Conversation Fluency</span></div>
+                        </div>
+                    </div>
+
+                    <!-- 캐러셀 컨트롤 -->
+                    <div class="flex items-center justify-center gap-4 mt-8">
+                        <button id="testimonialPrev" aria-label="Previous" class="carousel-arrow">&#8592;</button>
+                        <div id="testimonialDots" class="flex gap-2"></div>
+                        <button id="testimonialNext" aria-label="Next" class="carousel-arrow">&#8594;</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== FAQ ===================== -->
+        <section id="faq" class="px-5 sm:px-8 py-20 bg-creamAlt/60 border-t border-borderSoft">
+            <div class="max-w-3xl mx-auto fade-in">
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-navyDark text-center mb-12">
+                    <span class="i18n" data-en="Frequently Asked Questions" data-ko="자주 묻는 질문">Frequently Asked Questions</span>
+                </h2>
+
+                <div class="space-y-3">
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span class="i18n" data-en="Do I need any Korean background to start?" data-ko="수업을 시작하려면 한국어 배경 지식이 필요한가요?">Do I need any Korean background to start?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p class="i18n" data-en="No. Many of my students start from zero, including learning Hangul in the first lesson." data-ko="아니요. 많은 학생들이 한글 학습부터, 즉 완전히 처음부터 시작합니다.">No. Many of my students start from zero, including learning Hangul in the first lesson.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span class="i18n" data-en="Are classes online or in person?" data-ko="수업은 온라인인가요, 오프라인인가요?">Are classes online or in person?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p class="i18n" data-en="Both. Online classes run via Zoom; in-person classes are available in Seoul." data-ko="둘 다 가능합니다. 온라인 수업은 Zoom으로 진행되며, 서울에서는 오프라인 수업도 가능합니다.">Both. Online classes run via Zoom; in-person classes are available in Seoul.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span class="i18n" data-en="How long is the trial class, and is it really free?" data-ko="시범수업은 얼마나 걸리고, 정말 무료인가요?">How long is the trial class, and is it really free?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p class="i18n" data-en="Yes, it's completely free and lasts 30 minutes — enough time for a level check and a short sample lesson." data-ko="네, 완전히 무료이며 30분간 진행됩니다. 레벨 테스트와 짧은 샘플 수업을 경험할 수 있습니다.">Yes, it's completely free and lasts 30 minutes — enough time for a level check and a short sample lesson.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span class="i18n" data-en="What time zones do you teach in?" data-ko="어떤 시간대에 수업이 가능한가요?">What time zones do you teach in?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p class="i18n" data-en="I teach based in Korea Standard Time (KST), with early-morning and evening slots available for most time zones." data-ko="한국 표준시(KST) 기준으로 수업하며, 대부분의 시간대에 맞춰 이른 아침이나 저녁 시간도 운영합니다.">I teach based in Korea Standard Time (KST), with early-morning and evening slots available for most time zones.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== 시범수업 신청 (Apply) ===================== -->
+        <section id="apply" class="px-5 sm:px-8 py-24 bg-navy text-cream text-center">
+            <div class="max-w-2xl mx-auto fade-in">
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold mb-4">
+                    <span class="i18n" data-en="Ready to start speaking Korean?" data-ko="이제 한국어로 말할 준비가 되셨나요?">Ready to start speaking Korean?</span>
+                </h2>
+                <p class="i18n text-cream/75 text-lg mb-8 leading-relaxed" data-en="Book your free 30-minute trial class and get a personalized learning plan — no commitment required." data-ko="30분 무료 시범수업을 신청하고 맞춤형 학습 플랜을 받아보세요. 별도의 약정이 필요하지 않습니다.">Book your free 30-minute trial class and get a personalized learning plan — no commitment required.</p>
+
+                <!--
+                    TODO: 아래 href의 예약 링크(Calendly, 네이버 폼 등)를 실제 주소로 교체하세요.
+                    별도 신청 폼/전송 로직 없이, 외부 예약 페이지로 바로 연결하는 방식입니다.
+                -->
+                <a href="https://calendly.com/your-booking-link" target="_blank" rel="noopener noreferrer"
+                   class="cta-button inline-flex items-center px-8 py-4 rounded-full bg-gold text-navyDark font-bold text-lg hover:brightness-110 transition">
+                    <span class="i18n" data-en="Book a Trial Class" data-ko="시범수업 신청하기">Book a Trial Class</span>
+                    <span class="ml-2">&rarr;</span>
+                </a>
+                <p class="i18n text-cream/50 text-xs mt-4" data-en="Opens the booking calendar in a new tab." data-ko="새 탭에서 예약 캘린더가 열립니다.">Opens the booking calendar in a new tab.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- ===================== 푸터 ===================== -->
+    <footer class="px-5 sm:px-8 py-10 bg-navyDark text-cream/60 text-sm">
+        <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p class="i18n" data-en="© 2026 OOO. All rights reserved." data-ko="© 2026 OOO. All rights reserved.">© 2026 OOO. All rights reserved.</p>
+            <div class="flex items-center gap-5">
+                <!-- 이메일은 스크랩 방지를 위해 JS로 런타임에 조립되어 삽입됨 -->
+                <span id="contactEmail" class="protected"></span>
+                <a href="https://www.instagram.com/your_username" target="_blank" rel="noopener noreferrer" class="hover:text-cream transition">Instagram</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 개발자 도구 감지 시 표시되는 경고 오버레이 (완전한 차단은 아님, script.js 주석 참고) -->
+    <div id="devtoolsOverlay" class="devtools-overlay hidden">
+        <div class="devtools-overlay-box">
+            <p class="i18n" data-en="Developer tools are restricted on this page to protect personal information." data-ko="개인정보 보호를 위해 이 페이지에서는 개발자 도구 사용이 제한됩니다.">Developer tools are restricted on this page to protect personal information.</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

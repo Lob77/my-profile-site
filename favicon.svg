@@ -1,0 +1,13 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- 배경: 차분한 네이비 원 -->
+  <circle cx="100" cy="100" r="95" fill="#1f3a5f"/>
+
+  <!-- 말풍선 (대화/강의를 상징) -->
+  <path d="M45 70 Q45 50 65 50 L135 50 Q155 50 155 70 L155 115 Q155 135 135 135 L95 135 L70 158 L75 135 L65 135 Q45 135 45 115 Z" fill="#faf8f4"/>
+
+  <!-- 한글 자음 'ㄱ'을 형상화한 포인트 -->
+  <path d="M80 75 L80 110 L118 110" stroke="#1f3a5f" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+  <!-- 포인트 액센트 (성장/배움을 상징하는 점) -->
+  <circle cx="150" cy="55" r="10" fill="#c98a3b"/>
+</svg>

@@ -1,0 +1,237 @@
+/* ===================== 기본 설정 ===================== */
+html {
+    scroll-behavior: smooth;
+}
+
+section {
+    scroll-margin-top: 72px;
+}
+
+::selection {
+    background: #C98A3B;
+    color: #FAF8F4;
+}
+
+/* 스크롤바 */
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: #F1ECE3;
+}
+::-webkit-scrollbar-thumb {
+    background: #1F3A5F;
+    border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #15283F;
+}
+
+/* ===================== 스크롤 페이드인 ===================== */
+.fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ===================== 내비게이션 ===================== */
+.nav-link {
+    position: relative;
+    padding-bottom: 4px;
+}
+.nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background: #C98A3B;
+    transition: width 0.25s ease;
+}
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+/* 언어 전환 버튼 */
+.lang-btn {
+    color: #6B6B64;
+    background: transparent;
+    transition: all 0.2s ease;
+}
+.lang-btn.active {
+    background: #1F3A5F;
+    color: #FAF8F4;
+}
+
+/* CTA 버튼 눌림 효과 */
+.cta-button:active {
+    transform: scale(0.97);
+}
+
+/* ===================== 코스 카드 ===================== */
+.course-card {
+    background: #ffffff;
+    border: 1px solid #E4DED2;
+    border-radius: 14px;
+    padding: 1.75rem;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.course-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px -8px rgba(31, 58, 95, 0.18);
+}
+
+/* ===================== 수업 진행 단계 카드 ===================== */
+.step-card {
+    text-align: left;
+}
+.step-number {
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 50%;
+    background: #C98A3B;
+    color: #15283F;
+    font-weight: 700;
+    font-family: 'Noto Serif KR', serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+/* 소개 섹션 불릿 점 */
+.dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #C98A3B;
+    flex-shrink: 0;
+}
+
+/* ===================== 후기 캐러셀 ===================== */
+.testimonial-slide {
+    display: none;
+    text-align: center;
+}
+.testimonial-slide.active {
+    display: block;
+    animation: fadeInUp 0.5s ease-out;
+}
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.carousel-arrow {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    border: 1px solid #E4DED2;
+    color: #1F3A5F;
+    transition: all 0.2s ease;
+}
+.carousel-arrow:hover {
+    background: #1F3A5F;
+    color: #FAF8F4;
+}
+.carousel-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #E4DED2;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+.carousel-dot.active {
+    background: #C98A3B;
+}
+
+/* ===================== FAQ 아코디언 ===================== */
+.faq-item {
+    background: #ffffff;
+    border: 1px solid #E4DED2;
+    border-radius: 12px;
+    overflow: hidden;
+}
+.faq-question {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.1rem 1.4rem;
+    text-align: left;
+    font-weight: 600;
+    color: #15283F;
+    background: transparent;
+    cursor: pointer;
+}
+.faq-icon {
+    color: #C98A3B;
+    font-size: 1.25rem;
+    font-weight: 700;
+    transition: transform 0.25s ease;
+    flex-shrink: 0;
+    margin-left: 1rem;
+}
+.faq-item.open .faq-icon {
+    transform: rotate(45deg);
+}
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    color: #6B6B64;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+.faq-answer p {
+    padding: 0 1.4rem 1.1rem;
+}
+.faq-item.open .faq-answer {
+    max-height: 220px;
+}
+
+/* ===================== 개인정보 보호 관련 UI =====================
+   주의: 아래 .protected 클래스와 devtools 감지 오버레이는
+   "가벼운 복사/캡처 억제" 수준의 장치일 뿐, 의도적으로 소스를
+   확인하려는 사용자를 완전히 막을 수는 없습니다. 실제로 노출되면
+   안 되는 정보는 애초에 평문으로 HTML/JS에 포함하지 않아야 합니다.
+*/
+.protected {
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.devtools-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(21, 40, 63, 0.97);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+.devtools-overlay.hidden {
+    display: none;
+}
+.devtools-overlay-box {
+    max-width: 28rem;
+    text-align: center;
+    color: #FAF8F4;
+    font-family: 'Noto Serif KR', serif;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+/* ===================== 모바일 보정 ===================== */
+@media (max-width: 640px) {
+    .fade-in {
+        transform: translateY(14px);
+    }
+}
