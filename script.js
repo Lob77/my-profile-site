@@ -158,7 +158,7 @@ document.addEventListener('DOMContentLoaded', function () {
        (주의: 이 방식도 콘솔에서 직접 변수를 조회하면 그대로 드러나므로
        완전한 차단이 아니라 "가벼운 억제" 수준임을 감안할 것)
     */
-    const emailParts = ['hello', '@', 'seoyeonkorean', '.com'];
+    const emailParts = ['example', '@', 'example', '.com'];
     const emailEl = document.getElementById('contactEmail');
     if (emailEl) {
         const email = emailParts.join('');
